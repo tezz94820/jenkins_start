@@ -1,0 +1,66 @@
+1. Jenkins is an automation platform which can be used to automate Python scripts or Bash files as well 
+2. We can create triggers. This trigger can be switch on by clicking a button or we can just set a timer for it. So a program will run after a particular set of time. 
+3. It has the master-slave architecture. The master is responsible for triggering the events and giving into the slave to run it this leaves can also be called as agents. The main function of the master node is to trigger and assign the task to the slim nodes or agents
+4. There are two types of agents :- permanent agents and cloud agents 
+   Permanent agents :- they are the agents that work on a particular operating system maybe it Linux or Windows or Mac OS. 
+   Cloud agents :- this are most widely used the examples of it can be docker tubernet is a w s Pipelines
+
+###BUILD TYPES
+5. There are two possible types of jobs which we can create using jenkins. 
+    1. Free style builds :- These are one Of the simplest method one of creating the builds. We can use the GUI for building this jobs and build a build. You just need to have a basic knowledge of bash scripting . That is Linux scripting . To perform the actions
+    2. Pipelines :- This is generally return in a groovy language. And is more detailed what happens during a build. And this uses stages to break down the components of build test and play stages. 
+        For example :- There can be five stages as clone,build,test,package,deploy. Test clone is used to clone the gate repository then build is used to build the in test is used to test packages used to pack all the information in one file and just deployed
+  
+###Installing Jenkins on docker
+6. https://www.jenkins.io/doc/book/installing/docker/
+7. https://github.com/devopsjourney1/jenkins-101
+
+### Interating with Jenkins freestyle Job
+1. bash commands 
+    echo "Hello World" :- prints "Hello World" just to check job is running/not
+    echo "the build id is ${BUILD_ID}" :- gives the build_id 
+    echo "the build url is ${BUILD_URL}" :- gives the build URL so other people can also look into what you got.
+    ls -ltr :- shows all the files in current directory
+    echo "1234" > test.txt :- makes a test.txt file and adds 1234 in it..
+    there is a option in configure about delete workspace before build clik that to remove all the changes in the files before your next build.
+
+##Jenkins file structure 
+""indside_container/var/jenkins_home/workspace/your_app_name/""
+
+## RUNNING THE JENKINS JOB FOR A GIT repository
+1. put the git repository link in it. :- https://github.com/devopsjourney1/jenkins-101
+2. for python write the command to initialize it :- python helloworld.java
+so we can automate any github repository.
+
+##DOCKER CLOUD agents
+## we need to make docker node . i.e we will run the docker in jenkins . so what is happening is we want to run docker in jenkins . where jenkins is itself running on docker.
+so you need to start alpine container and its IP addres's 2375 port of tcp is given to docker URI . to understand got o github link provided.
+so you can make a agent in the docker utilising the alpine image . so it will run any jenkins job . But it will not run the job requiring python because python3 is not installe din alpine image .
+
+Hence we can make our own docker image and import it using jenkins docker and then make a agent out of it and finally python3 will run in that docker conatiner.because it contains python3.
+so you are making multiple agents for 1 Node.
+
+
+##poll SCM while configuring the job helps to automatically build the job in jenkins if any changes in the git repo happens.
+
+###NODES AND AGENTS IN JENKINS###
+In Jenkins, the terms "agent" and "node" refer to the computational resources on which Jenkins builds and executes tasks. Let's look at each term individually:
+
+Agent: An agent in Jenkins is a machine or a virtual environment that can be used to perform tasks or execute 
+        builds. It can be a physical server, a virtual machine, or a container. An agent is responsible for 
+        connecting to the Jenkins master, receiving build instructions, and executing the tasks assigned to 
+        it. Agents provide the necessary computing power and resources to run builds and perform other 
+        operations.
+
+Node: A node is a concept in Jenkins that represents a distinct computing environment, which can be an agent 
+        or a group of agents. Nodes are defined and configured in Jenkins to distribute the workload across 
+        multiple machines or environments. A node can represent a single agent or a group of agents that have 
+        similar characteristics, such as the operating system or available tools.
+
+
+
+##BUILDING PIPELINES IN JENKINS
+1. GROOVY LANGUAGE IS USED FOR WRITING PIPELINE SCRIPTS :- Groovy is a powerful scripting language that is used extensively in Jenkins for writing pipeline scripts, configuring Jenkins, and performing various automation tasks. Jenkins uses the Groovy language as the foundation for its Pipeline plugin, which allows you to define build processes as code.
+2. SCM :- SCM process which is defined in the triggers in the Jenkins file . Whenever we try to push something in our Gate repository and as we know that our Gate repository is already connected to our Jenkins job then by using the HCM it directly understand that something is changed in the gate and it rebuild the job.
+
+   
